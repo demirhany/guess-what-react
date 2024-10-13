@@ -1,6 +1,8 @@
-function wordInputField(props) {
+function WordInputField(props) {
     const handleSubmit = (e) => {
         const input = document.getElementById("word_input");
+        const newWord = input.value;
+        props.setWordInput((prevWords) => [...prevWords, newWord]);
         input.value = "";
         e.preventDefault();
     }
@@ -16,7 +18,7 @@ function wordInputField(props) {
     )
 }
 
-export default wordInputField;
+export default WordInputField;
 
 /*
     <div class="row mt-2" id="input_parent">
