@@ -1,5 +1,4 @@
 function WordBoxes(props) {
-    console.log(props.size);
     return (
         <div>
             {props.words.map((word, i) => {
