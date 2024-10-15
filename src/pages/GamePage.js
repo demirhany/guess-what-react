@@ -8,13 +8,15 @@ function GamePage() {
     const [wordSize, setWordSize] = useState(5);
     const [wordInputs, setWordInputs] = useState([]);
     const [words, setWords] = useState([]);
+    const [isPlay, setIsPlay] = useState(false);
     useEffect(() => {
         setWords(wordGen(wordSize, wordInputs));
-    }, [wordInputs, wordSize]);
+        console.log(isPlay);
+    }, [wordInputs, wordSize, isPlay]);
     return (
         <div className={"container-fluid"}>
-            <WordSizePicker onWordSizeChange={(size) => setWordSize(size)}/>
-            <WordBoxes words={words} size={wordSize}/>
+            <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
+            {isPlay && <WordBoxes words={words} size={wordSize}/>}
             <WordInputField size={wordSize} setWordInput={setWordInputs}/>
         </div>
     );

@@ -1,32 +1,41 @@
-function WordSizePicker({onWordSizeChange}) {
+function WordSizePicker({onWordSizeChange, onPlayClick}) {
     const handleWordSizeChange = (event) => {
         onWordSizeChange(parseInt(event.target.value), 10);
     }
+    const handlePlayClick = (event) => {
+        onPlayClick(true);
+    }
     return (
-        <div className="row" id="word_size_parent">
-            <div className="d-inline">
-                Word Size:
+        <div className={"row"}>
+            <div className="col-6" id="word_size_parent">
+                <div className="d-inline">
+                    Word Size:
+                </div>
+                <div className="form-check">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                           value="5" onChange={handleWordSizeChange}/>
+                    <label className="form-check-label" htmlFor="flexRadioDefault1">
+                        5
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                           value="6" onChange={handleWordSizeChange}/>
+                    <label className="form-check-label" htmlFor="flexRadioDefault2">
+                        6
+                    </label>
+                </div>
+                <div className="form-check">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
+                           value="7" onChange={handleWordSizeChange}/>
+                    <label className="form-check-label" htmlFor="flexRadioDefault3">
+                        7
+                    </label>
+                </div>
             </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                       value="5" onChange={handleWordSizeChange} />
-                <label className="form-check-label" htmlFor="flexRadioDefault1">
-                    5
-                </label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                       value="6" onChange={handleWordSizeChange} />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                    6
-                </label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3"
-                       value="7" onChange={handleWordSizeChange} />
-                <label className="form-check-label" htmlFor="flexRadioDefault3">
-                    7
-                </label>
+
+            <div className="col-6 d-flex justify-content-end align-items-center">
+                <button className={"btn btn-primary"} onClick={handlePlayClick}>Play</button>
             </div>
         </div>
     )
