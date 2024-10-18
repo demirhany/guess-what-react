@@ -60,11 +60,10 @@ export async function selectRandomWord(wordSize) {
 }
 
 export function checkIfWordsSame(input, randomWord) {
-    console.log(randomWord);
-    for (let i = 0; i < input.length; i++) {
-        if (randomWord === input[i]) {
-            return true;
-        }
-    }
-    return false;
+    return input.some(word => word === randomWord);
+}
+
+export function checkIfGameEnd(isWordsSame, inputCount) {
+    return !isWordsSame && inputCount === 6;
+
 }
