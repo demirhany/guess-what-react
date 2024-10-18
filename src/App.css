@@ -47,3 +47,12 @@
     background-color: transparent;
     margin: 5px
 }
+.letter_box.correct {
+    background-color: #99CF63;
+    color: white;
+}
+
+.letter_box.incorrect {
+    background-color: #FF4747;
+    color: white;
+}
