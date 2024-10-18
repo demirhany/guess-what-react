@@ -2,8 +2,9 @@ import WordSizePicker from "../components/WordSizePicker";
 import WordBoxes from "../components/WordBoxes";
 import {useEffect, useState} from "react";
 import WordInputField from "../components/WordInputField";
-import {checkIfWordsSame, selectRandomWord, wordGen} from "../utils/GameLogic";
-import WinModal from "../components/WinModal";
+import {checkIfGameEnd, checkIfWordsSame, isGameEnd, selectRandomWord, wordGen} from "../utils/GameLogic";
+import Win from "../components/Win";
+import Lose from "../components/Lose";
 
 function GamePage() {
     const [wordSize, setWordSize] = useState(5);
@@ -12,6 +13,8 @@ function GamePage() {
     const [isPlay, setIsPlay] = useState(false);
     const [randomWord, setRandomWord] = useState("");
     const [isWordsSame, setIsWordsSame] = useState(false);
+    const [inputCount, setInputCount] = useState(0);
+    const [isGameEnd, setIsGameEnd] = useState(false);
 
     useEffect(() => {
         setWords(wordGen(wordSize, wordInputs));
@@ -28,20 +31,30 @@ function GamePage() {
     }, [isPlay]);
 
     useEffect(() => {
-        if(isPlay){
-            const _words = wordInputs;
-            if(checkIfWordsSame(_words, randomWord)) {
-                setIsWordsSame(true);
-            }
+        if (isPlay) {
+            console.log(randomWord);
         }
-    }, [randomWord, words]);
+    }, [randomWord]);
+
+    useEffect(() => {
+        setInputCount(inputCount + 1);
+        if(checkIfWordsSame(wordInputs, randomWord)) {
+            setIsWordsSame(true);
+            setIsPlay(false);
+        }
+        if(checkIfGameEnd(checkIfWordsSame(wordInputs, randomWord), inputCount)) {
+            setIsGameEnd(true);
+            setIsPlay(false);
+        }
+    }, [wordInputs]);
 
     return (
         <div className={"container-fluid"}>
             <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
-            {isPlay && <WordBoxes words={words} size={wordSize}/>}
+            {isPlay && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
             {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
-            {isWordsSame && <WinModal />}
+            {!isPlay && isWordsSame && <Win />}
+            {isGameEnd && <Lose />}
         </div>
     );
 }
