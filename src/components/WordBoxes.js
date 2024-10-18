@@ -1,17 +1,20 @@
-function WordBoxes(props) {
+function WordBoxes({words, randomWord}) {
     return (
         <div>
-            {props.words.map((word, i) => {
+            {words.map((word, i) => {
                 return (
-                        <div className="row" key={"b" + i}>
-                            <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
-                                {word.split('').map((char, k) => {
-                                    return (
-                                        <LetterBox char={char} key={"c" + i + k}/>
-                                    )
-                                })}
-                            </div>
+                    <div className="row" key={"b" + i}>
+                        <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
+                            {word.split('').map((char, j) => {
+                                let isEmpty = true;
+                                const isCorrect = char === randomWord[j];
+                                isEmpty = char === '\0';
+                                return (
+                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty} key={"c" + i + j}/>
+                                )
+                            })}
                         </div>
+                    </div>
                 )
             })}
         </div>
@@ -20,12 +23,22 @@ function WordBoxes(props) {
 
 export default WordBoxes;
 
-function LetterBox({char}) {
-    return (
-        <div className={"letter_box"}>
-            {char}
-        </div>
-    )
+function LetterBox({char, isCorrect, isEmpty}) {
+    if(isEmpty) {
+        return (
+            <div className={"letter_box"}>
+                <h1 className={"text-center fs-4"}>
+                    {char}
+                </h1>
+            </div>
+        )
+    } else{
+        return (
+            <div className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
+                    {char}
+            </div>
+        );
+    }
 }
 
 /*
