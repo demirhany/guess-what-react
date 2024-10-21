@@ -47,7 +47,6 @@ function GamePage() {
             setIsPlay(false);
         }
     }, [wordInputs]);
-    //deneme
 
     return (
         <div className={"container-fluid"}>

@@ -7,10 +7,18 @@ function WordBoxes({words, randomWord}) {
                         <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
                             {word.split('').map((char, j) => {
                                 let isEmpty = true;
+                                let isCharInWord = false;
+                                let index = randomWord.indexOf(char);
+                                if(index > -1) {
+                                    isCharInWord = true;
+                                    console.log(isCharInWord);
+                                } else {
+                                    isCharInWord = false;
+                                }
                                 const isCorrect = char === randomWord[j];
                                 isEmpty = char === '\0';
                                 return (
-                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty} key={"c" + i + j}/>
+                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty} isCharInWord={isCharInWord} key={"c" + i + j}/>
                                 )
                             })}
                         </div>
@@ -23,7 +31,7 @@ function WordBoxes({words, randomWord}) {
 
 export default WordBoxes;
 
-function LetterBox({char, isCorrect, isEmpty}) {
+function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
     if(isEmpty) {
         return (
             <div className={"letter_box"}>
@@ -32,12 +40,26 @@ function LetterBox({char, isCorrect, isEmpty}) {
                 </h1>
             </div>
         )
-    } else{
+    } else if(isCharInWord && isCorrect) {
         return (
             <div className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
                     {char}
             </div>
-        );
+        )
+    } else if(!isCharInWord && !isCorrect) {
+        return (
+            <div
+                className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
+                {char}
+            </div>
+        )
+    } else {
+        return (
+            <div
+                className={"letter_box in-word fs-2 fw-bold d-flex justify-content-center align-items-center"}>
+                {char}
+            </div>
+        )
     }
 }
 
