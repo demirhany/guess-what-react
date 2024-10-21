@@ -59,3 +59,7 @@ function GamePage() {
     );
 }
 export default GamePage;
+
+//todo: Sound effects when a letter is whether correct or incorrect
+//todo: Animations when inputs are locating
+//todo:Good lose and win pages
