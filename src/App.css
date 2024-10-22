@@ -61,3 +61,10 @@
     background-color: #E9CF0C;
     color: white;
 }
+
+.lose.correct-word-display {
+    color: #CC0000;
+}
+.win.correct-word-display {
+    color: #CC0000;
+}
