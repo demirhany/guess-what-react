@@ -1,24 +1,36 @@
 function WordBoxes({words, randomWord}) {
+    const getCharacterCount = (word) => {
+        const count = {};
+        for (const char of word) {
+            count[char] = (count[char] || 0) + 1;
+        }
+        return count;
+    };
+
+    const randomWordCount = getCharacterCount(randomWord);
     return (
         <div>
+            <div className="row">
+                <h1 className={"fs-4"}>First Letter: {randomWord[0]}</h1>
+            </div>
             {words.map((word, i) => {
+                const currentWordCount = { ...randomWordCount };
                 return (
                     <div className="row" key={"b" + i}>
                         <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
                             {word.split('').map((char, j) => {
-                                let isEmpty = true;
+                                let isEmpty = char === '\0';
                                 let isCharInWord = false;
-                                let index = randomWord.indexOf(char);
-                                if(index > -1) {
+                                let isCorrect = char === randomWord[j];
+
+                                console.log(currentWordCount[char]);
+                                if (currentWordCount[char] > 0) {
                                     isCharInWord = true;
-                                    console.log(isCharInWord);
-                                } else {
-                                    isCharInWord = false;
+                                    currentWordCount[char]--; // Decrement the count
                                 }
-                                const isCorrect = char === randomWord[j];
-                                isEmpty = char === '\0';
                                 return (
-                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty} isCharInWord={isCharInWord} key={"c" + i + j}/>
+                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty}
+                                               isCharInWord={isCharInWord} key={"c" + i + j}/>
                                 )
                             })}
                         </div>
@@ -32,7 +44,7 @@ function WordBoxes({words, randomWord}) {
 export default WordBoxes;
 
 function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
-    if(isEmpty) {
+    if (isEmpty) {
         return (
             <div className={"letter_box"}>
                 <h1 className={"text-center fs-4"}>
@@ -40,13 +52,14 @@ function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
                 </h1>
             </div>
         )
-    } else if(isCharInWord && isCorrect) {
+    } else if (isCharInWord && isCorrect) {
         return (
-            <div className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
-                    {char}
+            <div
+                className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
+                {char}
             </div>
         )
-    } else if(!isCharInWord && !isCorrect) {
+    } else if (!isCharInWord && !isCorrect) {
         return (
             <div
                 className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
@@ -62,21 +75,3 @@ function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
         )
     }
 }
-
-/*
-function createLetterBoxes(number) {
-    letter_boxes_parent.innerHTML = ``;
-    for(let i = 0; i < 6; i++) {
-        let row_parent_element = document.createElement("div");
-        let row_element = document.createElement("div");
-        row_element.setAttribute("class", "d-flex align-items-center justify-content-center");
-        for(let i = 0; i < number; i++) {
-            let box_element = document.createElement("div");
-            box_element.setAttribute("style", "min-width: 70px; min-height: 70px; max-height: 70px; max-width: 70px; background-color: darkgray; margin: 5px");
-            row_element.appendChild(box_element);
-        }
-        row_parent_element.appendChild(row_element);
-        letter_boxes_parent.appendChild(row_parent_element);
-    }
-}
- */
