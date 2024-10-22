@@ -53,8 +53,8 @@ function GamePage() {
             <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
             {isPlay && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
             {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
-            {!isPlay && isWordsSame && <Win />}
-            {isGameEnd && <Lose />}
+            {!isPlay && isWordsSame && <Win word={randomWord}/>}
+            {isGameEnd && <Lose word={randomWord} />}
         </div>
     );
 }
@@ -62,4 +62,5 @@ export default GamePage;
 
 //todo: Sound effects when a letter is whether correct or incorrect
 //todo: Animations when inputs are locating
-//todo:Good lose and win pages
+//todo: Good lose and win pages -- done
+//todo: First letter of the random word will be shown to user -- done
