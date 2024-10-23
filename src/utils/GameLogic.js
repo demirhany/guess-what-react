@@ -2,13 +2,20 @@ import five_letters from "./five_letters.txt";
 import six_letters from "./six_letters.txt";
 import seven_letters from "./seven_letters.txt";
 
-export function wordGen(wordSize, wordInput) {
+export function wordGen(wordSize, wordInput, randomWord) {
     let words = [];
-    let word;
+    let word = "";
+    console.log(randomWord);
     if (wordInput.length === 0) {
         for (let i = 0; i < 6; i++) {
-            word = "".padEnd(wordSize, '\0');
-            words.push(word);
+            if(i === 0) {
+                word = randomWord[0].padEnd(wordSize, '\0');
+                words.push(word);
+            } else {
+                word = "".padEnd(wordSize, '\0');
+                words.push(word);
+            }
+
         }
     } else {
         for (let j = 0; j < 6; j++) {

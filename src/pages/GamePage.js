@@ -17,8 +17,10 @@ function GamePage() {
     const [isGameEnd, setIsGameEnd] = useState(false);
 
     useEffect(() => {
-        setWords(wordGen(wordSize, wordInputs));
-    }, [ wordInputs, wordSize]);
+        if(randomWord !== "") {
+            setWords(wordGen(wordSize, wordInputs, randomWord));
+        }
+    }, [wordSize,randomWord, wordInputs ]);
 
     useEffect(() => {
         if (isPlay && randomWord === "") {
