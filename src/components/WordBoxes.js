@@ -1,33 +1,27 @@
 function WordBoxes({words, randomWord}) {
-    const getCharacterCount = (word) => {
-        const count = {};
-        for (const char of word) {
-            count[char] = (count[char] || 0) + 1;
-        }
-        return count;
-    };
-
-    const randomWordCount = getCharacterCount(randomWord);
     return (
         <div>
             <div className="row">
                 <h1 className={"fs-4"}>First Letter: {randomWord[0]}</h1>
             </div>
             {words.map((word, i) => {
-                const currentWordCount = { ...randomWordCount };
+                // const currentWordCount = { ...randomWordCount };
                 return (
                     <div className="row" key={"b" + i}>
                         <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
                             {word.split('').map((char, j) => {
                                 let isEmpty = char === '\0';
                                 let isCharInWord = false;
-                                let isCorrect = char === randomWord[j];
+                                let isCorrect = false;
 
-                                console.log(currentWordCount[char]);
-                                if (currentWordCount[char] > 0) {
+                                if (randomWord[j] === char) {
+                                    isCorrect = true;
+                                    console.log("is correct: "+isCorrect)
+                                } else if (randomWord.includes(char)) {
                                     isCharInWord = true;
-                                    currentWordCount[char]--; // Decrement the count
+                                    console.log("isCharInWord: "+isCharInWord)
                                 }
+
                                 return (
                                     <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty}
                                                isCharInWord={isCharInWord} key={"c" + i + j}/>
@@ -52,7 +46,7 @@ function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
                 </h1>
             </div>
         )
-    } else if (isCharInWord && isCorrect) {
+    } else if (isCorrect) {
         return (
             <div
                 className={`letter_box ${isCorrect ? 'correct' : 'incorrect'} fs-2 fw-bold d-flex justify-content-center align-items-center`}>
@@ -66,7 +60,7 @@ function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
                 {char}
             </div>
         )
-    } else {
+    } else if (isCharInWord){
         return (
             <div
                 className={"letter_box in-word fs-2 fw-bold d-flex justify-content-center align-items-center"}>

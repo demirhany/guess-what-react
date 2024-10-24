@@ -20,7 +20,7 @@ function GamePage() {
         if(randomWord !== "") {
             setWords(wordGen(wordSize, wordInputs, randomWord));
         }
-    }, [wordSize,randomWord, wordInputs ]);
+    }, [wordSize,randomWord, wordInputs]);
 
     useEffect(() => {
         if (isPlay && randomWord === "") {
@@ -66,3 +66,4 @@ export default GamePage;
 //todo: Animations when inputs are locating
 //todo: Good lose and win pages -- done
 //todo: First letter of the random word will be shown to user -- done
+//todo: Do not delete word boxes when the game end -- update game logic and game page wrt. that
