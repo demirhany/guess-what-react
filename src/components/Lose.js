@@ -3,7 +3,7 @@ function Lose({word}) {
         window.location.reload();
     }
     return (
-        <div>
+        <div className="mt-3">
             <div className="row">
                 <div className="col-6">
                     <h1 className={"fs-1 "}>Game Over!</h1>

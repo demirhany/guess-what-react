@@ -15,6 +15,7 @@ function GamePage() {
     const [isWordsSame, setIsWordsSame] = useState(false);
     const [inputCount, setInputCount] = useState(0);
     const [isGameEnd, setIsGameEnd] = useState(false);
+    const [isBoxesOpened, setIsBoxesOpened] = useState(false);
 
     useEffect(() => {
         if(randomWord !== "") {
@@ -23,6 +24,9 @@ function GamePage() {
     }, [wordSize,randomWord, wordInputs]);
 
     useEffect(() => {
+        if(isPlay) {
+            setIsBoxesOpened(true);
+        }
         if (isPlay && randomWord === "") {
             selectRandomWord(wordSize).then((word) => {
                 if (word) {
@@ -53,7 +57,7 @@ function GamePage() {
     return (
         <div className={"container-fluid"}>
             <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
-            {isPlay && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
+            {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
             {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
             {!isPlay && isWordsSame && <Win word={randomWord}/>}
             {isGameEnd && <Lose word={randomWord} />}

@@ -38,6 +38,7 @@ function WordBoxes({words, randomWord}) {
 export default WordBoxes;
 
 function LetterBox({char, isCorrect, isEmpty, isCharInWord}) {
+    char = char.toLocaleUpperCase("tr");
     if (isEmpty) {
         return (
             <div className={"letter_box"}>
