@@ -52,7 +52,7 @@
     color: white;
 }
 
-.letter_box.incorrect {
+.letter_box.not-in-word {
     background-color: #FF4747;
     color: white;
 }
@@ -67,4 +67,41 @@
 }
 .win.correct-word-display {
     color: #CC0000;
+}
+.custom-card-container {
+    text-align: center; /* Center inline-block elements */
+    height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width of the container */
+    position: relative; /* Position context for absolute positioning */
+}
+
+.custom-card {
+    display: inline-block; /* Use inline-block for card elements */
+    width: 20vw; /* Card width */
+    height: 60vh; /* Card height */
+    margin: 0 10px; /* Space between cards */
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    vertical-align: middle; /* Align cards vertically */
+}
+
+.custom-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Dimming background on hover */
+.custom-card-container:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Dims the background */
+}
+
+.custom-card img {
+    width: 100%; /* Make image fill the card */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Centering for the container */
+html, body {
+    height: 100%; /* Ensure the body takes full height */
+    margin: 0; /* Remove default margin */
 }

@@ -1,13 +1,36 @@
 function WordSizePicker({onWordSizeChange, onPlayClick}) {
-    const handleWordSizeChange = (event) => {
-        onWordSizeChange(parseInt(event.target.value), 10);
-    }
-    const game_pick_element = document.getElementById('game_pick_element');
-    const handlePlayClick = (event) => {
+    const cards = document.getElementById("cards");
+    const handleClick = (size) => {
+        onWordSizeChange(size);
         onPlayClick(true);
-        game_pick_element.innerHTML = ``;
-    }
+        cards.innerHTML = '';
+    };
+
+    /*
+        const handleWordSizeChange = (event) => {
+            onWordSizeChange(parseInt(event.target.value), 10);
+        }
+        const game_pick_element = document.getElementById('game_pick_element');
+        const handlePlayClick = (event) => {
+            onPlayClick(true);
+            game_pick_element.innerHTML = '';
+        }
+    */
     return (
+        <div className="-custom-card-container" id={"cards"}>
+            <div className="custom-card" onClick={() => handleClick(5)}>
+                <img src={`${process.env.PUBLIC_URL}/images/five.png`} alt="Resim 1"/>
+            </div>
+            <div className="custom-card" onClick={() => handleClick(6)}>
+                <img src={`${process.env.PUBLIC_URL}/images/five.png`} alt="Resim 2"/>
+            </div>
+            <div className="custom-card" onClick={() => handleClick(7)}>
+                <img src={`${process.env.PUBLIC_URL}/images/five.png`} alt="Resim 3"/>
+            </div>
+        </div>
+
+
+        /*
             <div className={"row"} id={"game_pick_element"}>
                 <div className="col-6" id="word_size_parent">
                     <div className="d-inline">
@@ -40,13 +63,15 @@ function WordSizePicker({onWordSizeChange, onPlayClick}) {
                     <button className={"btn btn-primary"} onClick={handlePlayClick}>Play</button>
                 </div>
             </div>
+        */
     )
 }
 
 export default WordSizePicker;
 
 /*
-* for (let i = 1; i < 4; i++) {
+* for (let i = 1; i
+    < 4; i++) {
     word_size_children[i].addEventListener('change', (event) => {
         let size = word_size_children[i].children[0].value;
         word_input.setAttribute("maxlength", size);
