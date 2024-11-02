@@ -21,11 +21,14 @@ function GamePage() {
         if(randomWord !== "") {
             setWords(wordGen(wordSize, wordInputs, randomWord));
         }
+        console.log(wordSize);
     }, [wordSize,randomWord, wordInputs]);
 
     useEffect(() => {
+        console.log("isPlay = " + isPlay);
         if(isPlay) {
             setIsBoxesOpened(true);
+            console.log(isBoxesOpened);
         }
         if (isPlay && randomWord === "") {
             selectRandomWord(wordSize).then((word) => {
