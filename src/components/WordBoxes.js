@@ -1,14 +1,12 @@
 import Character from "../entity/Character";
 
 function WordBoxes({words, randomWord}) {
-    return (
-        <div>
+    return (<div>
             <div className="row">
                 <h1 className={"fs-4"}>First Letter: {randomWord[0]}</h1>
             </div>
             {words.map((word, i) => {
-                const countsOfRandomWord = countLetters(randomWord);
-                let counts = countsOfRandomWord;
+                let counts = countLetters(randomWord);
                 let characters = [];
                 for (let j = 0; j < word.length; j++) {
                     characters.push(new Character(word[j], false, false, false));
@@ -28,7 +26,7 @@ function WordBoxes({words, randomWord}) {
                         characters[j].isNotInWord = true;
                     }
 
-                    if (countsOfRandomWord[char] === 0) {
+                    if (counts[char] === 0) {
                         for (let m = 0; m < word.length; m++) {
                             if (characters[m].isInWord && characters[m].ch === char) {
                                 characters[m].isInWord = false;
@@ -36,28 +34,20 @@ function WordBoxes({words, randomWord}) {
                             }
                         }
                     }
+                    return null;
                 });
 
-                return (
-                    <div className="row" key={"b" + i}>
+                return (<div className="row" key={"b" + i}>
                         <div className={"d-flex justify-content-center align-items-center"} key={"a" + i}>
                             {word.split('').map((char, j) => {
-                                const isInWord = characters[j].isInWord;
-                                const isCorrect = characters[j].isCorrect;
-                                const isNotInWord = characters[j].isNotInWord;
                                 const isEmpty = char === '\0';
-
-                                return (
-                                    <LetterBox char={char} isCorrect={isCorrect} isEmpty={isEmpty}
-                                               isInWord={isInWord} isNotInWord={isNotInWord} key={"c" + i + j}/>
-                                )
+                                return (<LetterBox char={char} isCorrect={characters[j].isCorrect} isEmpty={isEmpty}
+                                                   isInWord={characters[j].isInWord} isNotInWord={characters[j].isNotInWord} key={"c" + i + j}/>)
                             })}
                         </div>
-                    </div>
-                )
+                    </div>)
             })}
-        </div>
-    );
+        </div>);
 }
 
 export default WordBoxes;
@@ -65,34 +55,26 @@ export default WordBoxes;
 function LetterBox({char, isCorrect, isEmpty, isInWord, isNotInWord}) {
     // char = char.toLocaleUpperCase("tr");
     if (isEmpty) {
-        return (
-            <div className={"letter_box"}>
+        return (<div className={"letter_box"}>
                 <h1 className={"text-center fs-4"}>
                     {char}
                 </h1>
-            </div>
-        )
+            </div>)
     } else if (isCorrect) {
-        return (
-            <div
+        return (<div
                 className={`letter_box correct fs-2 fw-bold d-flex justify-content-center align-items-center`}>
                 {char}
-            </div>
-        )
+            </div>)
     } else if (isNotInWord) {
-        return (
-            <div
+        return (<div
                 className={`letter_box not-in-word fs-2 fw-bold d-flex justify-content-center align-items-center`}>
                 {char}
-            </div>
-        )
+            </div>)
     } else if (isInWord) {
-        return (
-            <div
+        return (<div
                 className={"letter_box in-word fs-2 fw-bold d-flex justify-content-center align-items-center"}>
                 {char}
-            </div>
-        )
+            </div>)
     }
 }
 
