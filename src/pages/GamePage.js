@@ -2,7 +2,7 @@ import WordSizePicker from "../components/WordSizePicker";
 import WordBoxes from "../components/WordBoxes";
 import {useEffect, useState} from "react";
 import WordInputField from "../components/WordInputField";
-import {checkIfGameEnd, checkIfWordsSame, isGameEnd, selectRandomWord, wordGen} from "../utils/GameLogic";
+import {checkIfGameEnd, checkIfWordsSame, selectRandomWord, wordGen} from "../utils/GameLogic";
 import Win from "../components/Win";
 import Lose from "../components/Lose";
 
@@ -73,4 +73,4 @@ export default GamePage;
 //todo: Animations when inputs are locating
 //todo: Good lose and win pages -- done
 //todo: First letter of the random word will be shown to user -- done
-//todo: Do not delete word boxes when the game end -- update game logic and game page wrt. that
+//todo: Do not delete word boxes when the game end -- update game logic and game page wrt. that --done

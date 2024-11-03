@@ -20,5 +20,4 @@ function Win({word}) {
     )
 }
 
-
 export default Win;
