@@ -3,7 +3,7 @@ import {Outlet} from "react-router-dom";
 
 function Layout() {
     return (
-        <div className="container">
+        <div className="layout-container">
             <AppBar />
 
             <Outlet />

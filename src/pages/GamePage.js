@@ -58,7 +58,7 @@ function GamePage() {
     }, [wordInputs]);
 
     return (
-        <div className={"container-fluid"}>
+        <div className={"container-fluid app-container"}>
             <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
             {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
             {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
