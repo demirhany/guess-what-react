@@ -3,14 +3,15 @@ import { MdQuestionMark } from "react-icons/md";
 
 function AppBar() {
     return (
-        <nav className="navbar bg-body-tertiary">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="/">
-                    <MdQuestionMark />
+        <nav className="app-bar">
+            <div className="navbar-content">
+                <a href="#" className="logo">
+                    <MdQuestionMark/>
                 </a>
-                <div className={"fs-4"}>Guess What</div>
+                <div className="navbar-title">Guess What</div>
             </div>
         </nav>
+
     );
 }
 
