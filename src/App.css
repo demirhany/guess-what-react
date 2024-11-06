@@ -2,6 +2,13 @@
     text-align: center;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 .App-logo {
     height: 40vmin;
     pointer-events: none;
@@ -37,28 +44,57 @@
     }
 }
 
+/* Navbar styles */
+.app-bar {
+    width: 100%;
+    color: #412525;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: #9ee4d2;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.navbar-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #9ee4d2;
+}
+
+
 .letter_box {
     border-radius: 8px;
-    border: 3px solid black;
+    border: 3px solid #9ee4d2;
     min-width: 70px;
     min-height: 70px;
     max-height: 70px;
     max-width: 70px;
-    background-color: transparent;
+    background: #0A141F;
+    color: #f7c469;
     margin: 5px
 }
 .letter_box.correct {
-    background-color: #99CF63;
+    background-color: #412525;
     color: white;
 }
 
 .letter_box.not-in-word {
-    background-color: #FF4747;
+    background-color: #c46352;
     color: white;
 }
 
 .letter_box.in-word {
-    background-color: #E9CF0C;
+    background-color: #F3A216;
     color: white;
 }
 
@@ -69,39 +105,109 @@
     color: #CC0000;
 }
 .custom-card-container {
-    text-align: center; /* Center inline-block elements */
-    height: 100vh; /* Full height of the viewport */
-    width: 100%; /* Full width of the container */
-    position: relative; /* Position context for absolute positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.layout-container {
+    height: 100vh;
+}
+
+.app-container {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .custom-card {
-    display: inline-block; /* Use inline-block for card elements */
-    width: 20vw; /* Card width */
-    height: 60vh; /* Card height */
-    margin: 0 10px; /* Space between cards */
+    padding: 20px;
+    width: 20vw;
+    height: 30vh;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-    vertical-align: middle; /* Align cards vertically */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 3s ease, color 3s ease; /* Smooth transition for 3 seconds */
+}
+.custom-card-title {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.custom-card.custom-card-1 {
+    background-color: #7D869C;
+    color: #860B46;
+}
+.custom-card.custom-card-2 {
+    background-color: #00CC66;
+    color: #184C52;
+}
+.custom-card.custom-card-3 {
+    background-color: #F75C03;
+    color: #632A1B;
 }
 
 .custom-card:hover {
-    transform: scale(1.05); /* Slightly enlarge the card */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+    transform: scale(1.05);
 }
 
-/* Dimming background on hover */
-.custom-card-container:hover {
-    background-color: rgba(0, 0, 0, 0.5); /* Dims the background */
+.game-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.custom-card img {
-    width: 100%; /* Make image fill the card */
-    height: auto; /* Maintain aspect ratio */
+.input-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field {
+    width: 50%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 3px solid #c46352;
+    border-radius: 4px;
+    background-color: #f7c469;
+    color: #412525;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #c46352;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f7c469;
+    background-color: #412525;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #714433;
 }
 
 /* Centering for the container */
 html, body {
+    background: linear-gradient(to bottom, #12263A, #0A141F);
     height: 100%; /* Ensure the body takes full height */
     margin: 0; /* Remove default margin */
 }
