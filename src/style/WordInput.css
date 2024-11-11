@@ -1,0 +1,19 @@
+.input-form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 1rem;
+    border: 3px solid #26527D;
+    border-radius: 4px;
+    background-color: #26527D;
+    color: #67f71e;
+    outline: none;
+}
+
+.input-field::placeholder {
+    color: #67f71e;
+}

@@ -18,15 +18,15 @@ function GamePage() {
     const [isBoxesOpened, setIsBoxesOpened] = useState(false);
 
     useEffect(() => {
-        if(randomWord !== "") {
+        if (randomWord !== "") {
             setWords(wordGen(wordSize, wordInputs, randomWord));
         }
         console.log(wordSize);
-    }, [wordSize,randomWord, wordInputs]);
+    }, [wordSize, randomWord, wordInputs]);
 
     useEffect(() => {
         console.log("isPlay = " + isPlay);
-        if(isPlay) {
+        if (isPlay) {
             setIsBoxesOpened(true);
             console.log(isBoxesOpened);
         }
@@ -47,26 +47,32 @@ function GamePage() {
 
     useEffect(() => {
         setInputCount(inputCount + 1);
-        if(checkIfWordsSame(wordInputs, randomWord)) {
+        if (checkIfWordsSame(wordInputs, randomWord)) {
             setIsWordsSame(true);
             setIsPlay(false);
         }
-        if(checkIfGameEnd(checkIfWordsSame(wordInputs, randomWord), inputCount)) {
+        if (checkIfGameEnd(checkIfWordsSame(wordInputs, randomWord), inputCount)) {
             setIsGameEnd(true);
             setIsPlay(false);
         }
     }, [wordInputs]);
 
     return (
-        <div className={"container-fluid app-container"}>
-            <WordSizePicker onWordSizeChange={(size) => setWordSize(size)} onPlayClick={(isPlay) => setIsPlay(isPlay)} />
-            {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}  />}
-            {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
-            {!isPlay && isWordsSame && <Win word={randomWord}/>}
-            {isGameEnd && <Lose word={randomWord} />}
-        </div>
+        <>
+            <div className={"container-fluid body-container"}>
+                <WordSizePicker onWordSizeChange={(size) => setWordSize(size)}
+                                onPlayClick={(isPlay) => setIsPlay(isPlay)}/>
+                <>
+                    {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}/>}
+                    {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
+                </>
+                {!isPlay && isWordsSame && <Win word={randomWord}/>}
+                {isGameEnd && <Lose word={randomWord}/>}
+            </div>
+        </>
     );
 }
+
 export default GamePage;
 
 //todo: Sound effects when a letter is whether correct or incorrect

@@ -1,0 +1,26 @@
+/* Navbar styles */
+.app-bar {
+    width: 100%;
+    color: #412525;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar-content {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    color: #9ee4d2;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.navbar-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #9ee4d2;
+}

@@ -1,3 +1,5 @@
+import '../style/WordInput.css';
+
 function WordInputField(props) {
     const handleSubmit = (e) => {
         const input = document.getElementById("word_input");
@@ -7,12 +9,11 @@ function WordInputField(props) {
         e.preventDefault();
     }
     return (
-        <div className="row mt-2" id={"input_parent"}>
-            <form onSubmit={handleSubmit} className={"input-group"}>
-                <input type="text" className="form-control" placeholder={"Word"}
+        <div>
+            <form onSubmit={handleSubmit} className="input-form container-fluid">
+                <input type="text" className="input-field" placeholder={"Word"}
                        aria-label={"Username"} maxLength={props.size} aria-describedby={"basic-addon1"}
-                       id={"word_input"}/>
-                <button type={"submit"} className={"btn btn-primary"}>Try</button>
+                       id={"word_input"} style={{width: props.size * 70 + 84}}/>
             </form>
         </div>
     )

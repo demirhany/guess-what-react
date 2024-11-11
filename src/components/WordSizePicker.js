@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import '../style/WordSizePicker.css'
 const colorClasses = ['custom-card-1', 'custom-card-2', 'custom-card-3'];
 
 function WordSizePicker({onWordSizeChange, onPlayClick}) {
@@ -8,7 +8,7 @@ function WordSizePicker({onWordSizeChange, onPlayClick}) {
     const cards = document.getElementById("cards");
     const handleClick = async (size) => {
         setColorIndex((prevColorIndex) => (prevColorIndex + 1) % colorClasses.length);
-        await delay(3000);
+        await delay(2000);
         onWordSizeChange(size);
         onPlayClick(true);
         cards.innerHTML = '';

@@ -1,6 +1,7 @@
 import {characterInitialization, countLetters} from "../utils/WordBoxesLogic";
 import {characterAssignment} from "../utils/WordBoxesLogic";
 import {LetterBox} from "../utils/WordBoxesLogic";
+import '../style/WordBoxes.css'
 
 function WordBoxes({words, randomWord}) {
     return (
