@@ -1,6 +1,6 @@
-import five_letters from "./five_letters.txt";
-import six_letters from "./six_letters.txt";
-import seven_letters from "./seven_letters.txt";
+import five_letters from "../words_txt/five_letters.txt";
+import six_letters from "../words_txt/six_letters.txt";
+import seven_letters from "../words_txt/seven_letters.txt";
 
 export function wordGen(wordSize, wordInput, randomWord) {
     let words = [];
