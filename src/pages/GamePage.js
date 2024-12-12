@@ -2,7 +2,7 @@ import WordSizePicker from "../components/WordSizePicker";
 import WordBoxes from "../components/WordBoxes";
 import {useEffect, useState} from "react";
 import WordInputField from "../components/WordInputField";
-import {checkIfGameEnd, checkIfWordsSame, selectRandomWord, wordGen} from "../utils/GameLogic";
+import {checkIfGameEnd, checkIfWordsSame, selectRandomWord, wordGen} from "../logic/GameLogic";
 import Win from "../components/Win";
 import Lose from "../components/Lose";
 
@@ -59,6 +59,8 @@ function GamePage() {
 
     return (
         <>
+            {isGameEnd && <Lose word={randomWord}/>}
+            {!isPlay && isWordsSame && <Win word={randomWord}/>}
             <div className={"container-fluid body-container"}>
                 <WordSizePicker onWordSizeChange={(size) => setWordSize(size)}
                                 onPlayClick={(isPlay) => setIsPlay(isPlay)}/>
@@ -66,8 +68,6 @@ function GamePage() {
                     {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}/>}
                     {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
                 </>
-                {!isPlay && isWordsSame && <Win word={randomWord}/>}
-                {isGameEnd && <Lose word={randomWord}/>}
             </div>
         </>
     );

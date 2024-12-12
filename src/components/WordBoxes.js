@@ -1,13 +1,13 @@
-import {characterInitialization, countLetters} from "../utils/WordBoxesLogic";
-import {characterAssignment} from "../utils/WordBoxesLogic";
-import {LetterBox} from "../utils/WordBoxesLogic";
+import {characterInitialization, countLetters} from "../logic/WordBoxesLogic";
+import {characterAssignment} from "../logic/WordBoxesLogic";
+import {LetterBox} from "../logic/WordBoxesLogic";
 import '../style/WordBoxes.css'
 
 function WordBoxes({words, randomWord}) {
     return (
         <div className="game-container">
             <div className="row">
-                <h1 className={"fs-4"}>First Letter: {randomWord[0]}</h1>
+                <h1 className={"fs-4 text-warning"}>First Letter: {randomWord[0]}</h1>
             </div>
             {words.map((word, i) => {
                 let counts = countLetters(randomWord);
