@@ -5,9 +5,9 @@ function AppBar() {
     return (
         <nav className="app-bar">
             <div className="navbar-content">
-                <a href="#" className="logo">
+                <div className="logo">
                     <MdQuestionMark/>
-                </a>
+                </div>
                 <div className="navbar-title">Guess What</div>
             </div>
         </nav>
