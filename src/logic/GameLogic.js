@@ -8,7 +8,7 @@ export function wordGen(wordSize, wordInput, randomWord) {
     console.log(randomWord);
     if (wordInput.length === 0) {
         for (let i = 0; i < 6; i++) {
-            if(i === 0) {
+            if (i === 0) {
                 word = randomWord[0].padEnd(wordSize, '\0');
                 words.push(word);
             } else {

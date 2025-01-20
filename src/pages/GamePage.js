@@ -62,18 +62,24 @@ function GamePage() {
             {isGameEnd && <Lose word={randomWord}/>}
             {!isPlay && isWordsSame && <Win word={randomWord}/>}
             <div className={"container-fluid body-container"}>
-                <WordSizePicker onWordSizeChange={(size) => setWordSize(size)}
-                                onPlayClick={(isPlay) => setIsPlay(isPlay)}/>
-                <>
+                <div className={"parent-word-size-picker"}>
+                    <WordSizePicker onWordSizeChange={(size) => setWordSize(size)}
+                                    onPlayClick={(isPlay) => setIsPlay(isPlay)}/>
+                </div>
+                <div>
                     {isBoxesOpened && <WordBoxes words={words} randomWord={randomWord} size={wordSize}/>}
+                </div>
+                <div>
                     {isPlay && <WordInputField size={wordSize} setWordInput={setWordInputs}/>}
-                </>
+                </div>
             </div>
         </>
     );
 }
 
 export default GamePage;
+
+//todo: make the build command as "CI=false npm run build"
 
 //todo: Sound effects when a letter is whether correct or incorrect
 //todo: Animations when inputs are locating

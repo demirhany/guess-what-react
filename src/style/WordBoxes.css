@@ -1,13 +1,13 @@
 .letter_box {
     border-radius: 8px;
     /*border: 3px solid #9ee4d2;*/
-    min-width: 70px;
-    min-height: 70px;
-    max-height: 70px;
-    max-width: 70px;
+    min-width: 3.5vw;
+    min-height: 7vh;
+    max-height: 14vh;
+    max-width: 7vw;
     background: #26527D;
     color: #f7c469;
-    margin: 5px
+    margin: 1%
 }
 .letter_box.correct {
     background-color: #00CC66;
@@ -22,4 +22,60 @@
 .letter_box.in-word {
     background-color: #F75C03;
     color: #632A1B;
+}
+
+@media (max-width: 1000px) {
+    .letter_box {
+        border-radius: 8px;
+        /*border: 3px solid #9ee4d2;*/
+        max-width: 18vw;
+        min-width: 9vw;
+        min-height: 7vh;
+        max-height: 14vh;
+        background: #26527D;
+        color: #f7c469;
+        margin: 1%
+    }
+    .letter_box.correct {
+        background-color: #00CC66;
+        color: #184C52;
+    }
+
+    .letter_box.not-in-word {
+        background-color: #7D869C;
+        color: #860B46;
+    }
+
+    .letter_box.in-word {
+        background-color: #F75C03;
+        color: #632A1B;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter_box {
+        border-radius: 8px;
+        /*border: 3px solid #9ee4d2;*/
+        max-width: 26vw;
+        min-width: 13vw;
+        min-height: 6vh;
+        max-height: 14vh;
+        background: #26527D;
+        color: #f7c469;
+        margin: 1%
+    }
+    .letter_box.correct {
+        background-color: #00CC66;
+        color: #184C52;
+    }
+
+    .letter_box.not-in-word {
+        background-color: #7D869C;
+        color: #860B46;
+    }
+
+    .letter_box.in-word {
+        background-color: #F75C03;
+        color: #632A1B;
+    }
 }

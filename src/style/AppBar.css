@@ -1,6 +1,7 @@
 /* Navbar styles */
 .app-bar {
-    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
     color: #412525;
     padding: 15px 20px;
     display: flex;
