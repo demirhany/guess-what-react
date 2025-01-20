@@ -4,7 +4,8 @@ function WordInputField(props) {
     const handleSubmit = (e) => {
         const input = document.getElementById("word_input");
         const newWord = input.value;
-        props.setWordInput((prevWords) => [...prevWords, newWord]);
+        const lowerCaseString = newWord.toLocaleLowerCase("tr");
+        props.setWordInput((prevWords) => [...prevWords, lowerCaseString]);
         input.value = "";
         e.preventDefault();
     }
