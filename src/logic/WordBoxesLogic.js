@@ -10,16 +10,19 @@ export function LetterBox({char, isCorrect, isEmpty, isInWord, isNotInWord}) {
         </div>)
     } else if (isCorrect) {
         return (<div
+            aria-label={`${char} is correct`}
             className={`letter_box correct fs-2 fw-bold d-flex justify-content-center align-items-center`}>
             {char}
         </div>)
     } else if (isNotInWord) {
         return (<div
+            aria-label={`${char} is wrong`}
             className={`letter_box not-in-word fs-2 fw-bold d-flex justify-content-center align-items-center`}>
             {char}
         </div>)
     } else if (isInWord) {
         return (<div
+            aria-label={`${char} is in the word`}
             className={"letter_box in-word fs-2 fw-bold d-flex justify-content-center align-items-center"}>
             {char}
         </div>)
