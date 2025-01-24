@@ -6,4 +6,5 @@ class Character {
         this.isNotInWord = isNotInWord;
     }
 }
+
 export default Character;

@@ -6,6 +6,9 @@ function Lose({word}) {
         <div className="mt-3">
             <div className="row d-flex justify-content-center">
                 <div className="col-6 d-flex justify-content-center align-items-center">
+                    <div aria-live="polite" className="visually-hidden">
+                        Game over, Correct Word is {word}. Try Again!
+                    </div>
                     <h1 className={"fs-1 text-danger d-inline"}>Game Over!</h1>
                     <h1 className={"fs-1 text-warning mx-5"}>Correct Word: <span
                         className={"lose correct-word-display"}>{word}</span></h1>

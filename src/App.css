@@ -36,12 +36,25 @@
 .lose.correct-word-display {
     color: #CC0000;
 }
+
 .win.correct-word-display {
     color: #CC0000;
 }
 
 .layout-container {
     height: 100vh;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .game-container {
@@ -65,16 +78,52 @@ html, body {
         justify-content: center;
         align-items: center;
     }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 1024px) {
     .body-container {
 
     }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 
 @media (max-width: 480px) {
     .body-container {
 
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border: 0;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+        white-space: nowrap;
     }
 }
