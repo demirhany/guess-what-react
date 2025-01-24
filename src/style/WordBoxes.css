@@ -28,7 +28,6 @@
 @media (max-width: 1000px) {
     .letter_box {
         border-radius: 8px;
-        /*border: 3px solid #9ee4d2;*/
         max-width: 18vw;
         min-width: 9vw;
         min-height: 7vh;

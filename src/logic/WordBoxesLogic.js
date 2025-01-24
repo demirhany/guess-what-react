@@ -1,33 +1,20 @@
 import Character from "../entity/Character";
+import {
+    CorrectLetterBox,
+    InWordLetterBox,
+    LetterBoxComposite,
+    NotInWordLetterBox
+} from "../patterns/LetterBoxComposite";
 
 export function LetterBox({char, isCorrect, isEmpty, isInWord, isNotInWord}) {
-    if (isEmpty) {
-        return (<div className={"letter_box"}>
-            <h1 className={"text-center fs-4"}>
-                {char}
-            </h1>
-        </div>)
-    } else if (isCorrect) {
-        return (<div
-            className={`letter_box correct fs-2 fw-bold d-flex justify-content-center align-items-center`}>
-            {char}
-        </div>)
-    } else if (isNotInWord) {
-        return (<div
-            className={`letter_box not-in-word fs-2 fw-bold d-flex justify-content-center align-items-center`}>
-            {char}
-        </div>)
-    } else if (isInWord) {
-        return (<div
-            className={"letter_box in-word fs-2 fw-bold d-flex justify-content-center align-items-center"}>
-            {char}
-        </div>)
-    }
+    if (isEmpty) return new LetterBoxComposite(char).render();
+    if (isCorrect) return new CorrectLetterBox(char).render();
+    if (isInWord) return new InWordLetterBox(char).render();
+    if (isNotInWord) return new NotInWordLetterBox(char).render();
 }
 
 export function countLetters(str) {
     const letterCounts = {};
-
     for (const char of str) {
         if (char !== ' ') {
             const lowerChar = char.toLowerCase();
@@ -61,6 +48,7 @@ export function characterAssignment(word, counts, characters, randomWord) {
                 }
             }
         }
+
         return null;
     });
 }
